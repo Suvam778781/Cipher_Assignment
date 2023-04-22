@@ -8,9 +8,12 @@ import {
   Flex,
   Textarea,
   Button,
+  Editable,
+  InputRightElement,
+  Box,
 } from "@chakra-ui/react";
 import React, { useState } from "react";
-import { SearchIcon } from "@chakra-ui/icons";
+import { CheckIcon, EditIcon, SearchIcon } from "@chakra-ui/icons";
 const Navbar = () => {
   return (
     <div>
@@ -44,22 +47,21 @@ const Navbar = () => {
     </div>
   );
 };
-
 export default Navbar;
-
-
 const Aboutme=()=>{
+const colors={bgColor:"#f3912e",bgColor2:"#757575"}
     const [state,setstate]=useState(false)
-
 return(
-<>
-<Flex>
-<Text> ABOUT ME</Text>
-<Button>Edit</Button>
+<Box w="95%" m="auto">
+<Flex justifyContent={"space-between"} textAlign={"center"} h="60px" alignItems={"center"} >
+<Text fontWeight={"600"}> ABOUT ME</Text>
+<Button bgColor={colors.bgColor}  px="22px" h="28px" color={"white"} borderRadius={"5px"} onClick={()=>setstate(!state)}>{state===false?"Edit":"Save"}</Button>
 </Flex>
-<Textarea placeholder="Add something about You."></Textarea>
-</>
-) 
-
+<InputGroup>
+    <Textarea h="120px" shadow={"sm"} isReadOnly={!state} _active={{border:"none"}} _focus={{border:"none"}}  placeholder="Add something about You.">somejjbjjn</Textarea>
+    <InputRightElement children={<Editable color='green.500' />} />
+  </InputGroup>
+</Box>
+)
 }
 export {Aboutme};

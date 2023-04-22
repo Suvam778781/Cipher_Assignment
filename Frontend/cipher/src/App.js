@@ -2,13 +2,14 @@ import logo from './logo.svg';
 import './App.css';
 import {useState} from "react"
 import Loginmodal from './Components/Loginmodal';
-import Navbar from './Components/Navbar';
+import Navbar, { Aboutme } from './Components/Navbar';
 function App() {
 
   return (
-    <div className="App">
+    <div className="App" >
       <Navbar/>
      {/* <Loginmodal/> */}
+     <Aboutme/>
     </div>
   );
 }
