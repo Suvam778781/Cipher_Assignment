@@ -21,7 +21,7 @@ UserRouter.post("/resistor", async (req, res) => {
   const { email, firstname, lastname, password, phone } = req.body;
   const user = await UserModel.findOne({ email });
   if (user) {
-    res.status(400).send({ msg: "User Already Exits Please login" });
+    res.status(400).send([{ msg: "User Already Exits Please login" }]);
   } else {
     try {
       bcrypt.hash(password, 7, async (err, secure_password) => {
@@ -36,12 +36,12 @@ UserRouter.post("/resistor", async (req, res) => {
             phone: phone || "",
           });
           await user.save();
-          res.send({ msg: "Resistered Succesfully" });
+          res.send([{ msg: "Resistered Succesfully" }]);
         }
       });
     } catch (err) {
       console.log(err);
-      res.status(400).send({ msg: "Error While Resistroring The User" });
+      res.status(400).send([{ msg: "Error While Resistroring The User" }]);
     }
   }
 });
